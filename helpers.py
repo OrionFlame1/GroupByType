@@ -7,12 +7,13 @@ def filesort():
     out_path = path
 
     unique_types = []
+    excluded_types = ['tmp', 'crdownload']
 
     for filename in os.listdir(path):  # iterating files and folder in downloads folder
         f = os.path.join(path, filename)  # concatenate path with filename
-        if os.path.isfile(f):  # check if current iteration contains a file
+        if os.path.isfile(f):  # check if current iteration is a file
             ext = str(filename.split(".")[-1])
-            if ext == 'tmp':
+            if ext in excluded_types:
                 continue
 
             if ext not in unique_types:  # check if filetype of current iteration is already found
